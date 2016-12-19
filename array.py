@@ -30,7 +30,21 @@ print(numbers)
 del numbers[:3]
 print(numbers)
 
+#slicing list
+example = list('hello world')
+print(example)
+example[6:] = list('baby')
+print(example)
 
+#add elements
+example = [6,7,8]
+example[1:1] = [2,3,4]
+print(example)
+example1 = [6,7,8]
+example1[1:2] = [2,3,4]
+print(example1)
+example[1:5] = []  #delete
+print(example)
 
 
 
