@@ -28,5 +28,19 @@ for k, v in doc_class.items():
    output.update({k:v})
 
 print 'after', output.items()
+print '--------------'
+output.clear()
 
-    
+print 'before feature', output.items()
+for k, v in doc_feature.items():
+   output.update({k:v})
+
+print 'after feature', output.items()
+print '+++++++++++'
+print output['doc1']
+print "add+++++++"
+output['doc1'].update({'foot':2})
+print 'after adding', output.items()
+a = 'doc2'
+output[a].update({'foot':100})
+print 'after adding', output.items()

@@ -8,7 +8,8 @@ class dic:
     def show(self):
         print self.data.items()
         for key, value in self.data.items():
-            # input in one line with ',' after value
+            # print in one line with ',' after value
+            # otherwise print in new line by default
             print key, '-', value,
 
 
