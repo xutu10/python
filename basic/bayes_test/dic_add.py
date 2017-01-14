@@ -20,6 +20,16 @@ doc_feature = {'doc1':
                }
 }
 
+
+# test syntax
+# print doc_feature['doc1']['the']
+
+# test del
+del doc_feature['doc1']['the']
+for k, v in doc_feature.items():
+   output.update({k:v})
+
+
 print 'before', output.items()
 
 #output.update({'item0':1})
