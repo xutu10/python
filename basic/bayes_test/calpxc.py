@@ -17,13 +17,27 @@ doc_feature = {'doc1':
                {
                    'football':7,
                    'trainer' :3
+               },
+               'doc5':
+               {
+                   'aaa':7,
+                   'bbb' :3
+               },
+               'doc6':
+               {
+                   'ccc':7,
+                   'ddd' :3
                }
+
+
 }
 
 doc_class = {'doc1':'arts',
              'doc2':'sports',
              'doc3':'business',
-             'doc4':'sports'
+             'doc4':'sports',
+             'doc5':'arts',
+             'doc6':'business'
 }
 
 # class : times
