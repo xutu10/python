@@ -130,38 +130,29 @@ class NaiveBayesClassifier():
             # handle self.pc
             if class_name in self.pc.keys():
                 self.pc[class_name] += 1.0
-            else:
-                # class occurs first time
-                # add class_name as key in self.pc
-                self.pc.update({class_name:1.0})
+            else:                                          # class occurs first time
+                self.pc.update({class_name:1.0})           # add class_name as key in self.pc
         
             # handle self.pxc
-            # store subdict in features
+                                                           # store subdict in features
             dict_temp = features[k]
-            # whether class already as key in self.pxc
-            if class_name in self.pxc.keys():
-                # increment counter of class
-                self.pxc[class_name]['class_counter'] += 1
-                # walk through subdict in features
-                for key in dict_temp.keys():
-                    # whether word as key already in subdict of self.pxc 
-                    if key in self.pxc[class_name].keys():
-                        # increment value of word
-                        self.pxc[class_name][key] += 1
+                                                        
+            if class_name in self.pxc.keys():               # whether class already as key in self.pxc
+                self.pxc[class_name]['class_counter'] += 1                 # increment counter of class
+                for key in dict_temp.keys():                # walk through every word in subdict in features
+                    if key in self.pxc[class_name].keys():   # whether word as key already in subdict of self.pxc 
+                        self.pxc[class_name][key] += 1                               # increment value of word
                     else:
-                        # add new word in subdict
-                        self.pxc[class_name].update({key:1.0})
+                        self.pxc[class_name].update({key:1.0})           # add new word in subdict
             else:
-                # class name occurs first time
-                # add class name as key in self.pxc
-                # and add classcounter as key in subdict of self.pxc
+                                                                         # class name occurs first time
+                                                                         # add class name as key in self.pxc
+                                                                         # and add classcounter as key in subdict of self.pxc
                 self.pxc.update({class_name:{}})
                 self.pxc[class_name].update({'class_counter':1})
-                # walk through subdict from feature
-                # add word in subdict of self.pxc
-                for key in dict_temp.keys():
-                    self.pxc[class_name].update({key:1.0})
 
+                for key in dict_temp.keys():                            
+                    self.pxc[class_name].update({key:1.0})     # add word in subdict of self.pxc                                                 
         # ending of for loop
 
         # calculate probability for each class in self.pc
@@ -170,14 +161,11 @@ class NaiveBayesClassifier():
 
         #calculate pro for each word in each class
         for k in self.pxc.keys():
-            # store counter of class
-            counter_tmp = self.pxc[k]['class_counter']
-            # remove the counter item from subdict
-            del self.pxc[k]['class_counter']
+            counter_tmp = self.pxc[k]['class_counter']                 # store counter of class
+            del self.pxc[k]['class_counter']                            # remove the counter item from subdict
     
             for key in self.pxc[k].keys():
-                # frequency devided by freqeuency of class
-                self.pxc[k][key] /= counter_tmp
+                self.pxc[k][key] /= counter_tmp                     # frequency divided by freqeuency of class
 
 #        raise NotImplementedError()
 
@@ -211,8 +199,8 @@ if __name__ == "__main__":
         labels[filename] = classlabel
 
     # FIXME: have a look at 'features' and 'labels'
-    # for k,v in labels.items():
-    #     print k,'-',v,
+#    for k,v in labels.items():
+#       print k,'-',v,
     # print '--------'
 
     # for k,v in features.items():
@@ -222,9 +210,9 @@ if __name__ == "__main__":
 
     #  train classifier on 'features' and 'labels' 
     # (using documents from the 'train' folder)
-    if args.train:
-        classifier.train(features, labels)
-        pickle.dump(classifier,file("classifier.pickle","wb"))
+   if args.train:
+       classifier.train(features, labels)
+       pickle.dump(classifier,file("classifier.pickle","wb"))
     # apply the classifier to documents from
     # the 'test' folder
     if args.apply:
